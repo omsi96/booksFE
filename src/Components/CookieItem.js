@@ -1,11 +1,11 @@
-import styles from "../styles";
+import styles, { Card, CookieImage } from "../styles";
 const CookieItem = ({ cookie }) => (
   <div>
-    <div style={styles.card}>
-      <img style={styles.cookieImage} src={cookie.img} alt="" />
+    <Card>
+      <CookieImage src={cookie.img} alt="Cookie image" />
       <h4 style={styles.text}>{cookie.name}</h4>
-      <p style={styles.text}>{cookie.price}</p>
-    </div>
+      <p className="cookie-price">{cookie.price}</p>
+    </Card>
   </div>
 );
 

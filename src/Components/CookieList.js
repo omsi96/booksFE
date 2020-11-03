@@ -1,12 +1,12 @@
-import styles from "../styles";
+import styles, { ListWrapper } from "../styles";
 import CookieItem from "./CookieItem";
 
 const CookiesList = ({ cookies }) => (
-  <div style={styles.cardsContainer}>
+  <ListWrapper>
     {cookies.map((cookie) => (
       <CookieItem cookie={cookie} />
     ))}
-  </div>
+  </ListWrapper>
 );
 
 export default CookiesList;

@@ -12,12 +12,16 @@ export const GlobalStyle = createGlobalStyle`
 `;
 export const Description = styled.h4`
   text-align: center;
+  color: ${(props) => props.theme.mainColor};
 `;
 export const ListWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+`;
+export const Paragraph = styled.p`
+  color: ${(props) => props.theme.mainColor};
 `;
 
 export const Card = styled.div`
@@ -30,8 +34,12 @@ export const Card = styled.div`
   border-width: 0.5px;
   border-color: #0f0f0f5f;
 
-  &.cookie-price {
+  .cookie-price {
     color: ${(props) => props.theme.pink};
+  }
+
+  h4 {
+    color: black;
   }
 `;
 

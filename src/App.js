@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles, { Title, Description, GlobalStyle } from "./styles";
+import styles, { Title, Description, GlobalStyle, ChangeTheme } from "./styles";
 import cookies from "./cookies";
 import CookieList from "./Components/CookieList";
 import { ThemeProvider } from "styled-components";
@@ -20,15 +20,18 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
+  const toggledTheme = (theme) => (theme === "dark" ? "light" : "dark");
   const toggleTheme = () => {
-    setCurrentTheme(currentTheme === "dark" ? "light" : "dark");
+    setCurrentTheme(toggledTheme);
   };
   return (
     <div>
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
 
-        <button onClick={toggleTheme}> TOGGLE </button>
+        <ChangeTheme onClick={toggleTheme}>
+          {`${toggledTheme(currentTheme)} mode`}
+        </ChangeTheme>
         <Title>Cookies and beyond!</Title>
         <Description>Where cookies maniacs gather</Description>
         <CookieList cookies={cookies} />

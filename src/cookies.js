@@ -8,14 +8,14 @@ const cookies = [
   },
   {
     id: 2,
-    name: "Katkoot Cookie",
+    name: "Pancake Cookie",
     price: "10 KD",
     img:
       "https://www.boorooandtiggertoo.com/wp-content/uploads/2019/01/Chicks-cookie-11-3.jpg",
   },
   {
     id: 3,
-    name: "Katkoot Cookie",
+    name: "Waffle Cookie",
     price: "10 KD",
     img:
       "https://www.boorooandtiggertoo.com/wp-content/uploads/2019/01/Chicks-cookie-11-3.jpg",

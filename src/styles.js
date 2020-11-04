@@ -77,4 +77,11 @@ const styles = {
   },
 };
 
+export const ChangeTheme = styled.button`
+  color: ${(props) => props.theme.mainColor};
+  background: ${(props) => props.theme.backgroundColor};
+  padding: 10px;
+  margin: 10px;
+`;
+
 export default styles;

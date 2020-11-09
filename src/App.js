@@ -1,7 +1,14 @@
 import { useState } from "react";
-import styles, { Title, Description, GlobalStyle, ChangeTheme } from "./styles";
+import styles, {
+  Title,
+  Description,
+  GlobalStyle,
+  ChangeTheme,
+  CookieImage,
+} from "./styles";
 import cookies from "./cookies";
 import CookieList from "./Components/CookieList";
+import CookieDetailsView from "./Components/CookieDetailsView";
 import { ThemeProvider } from "styled-components";
 // const cookies = require("./cookies");
 
@@ -24,6 +31,15 @@ function App() {
   const toggleTheme = () => {
     setCurrentTheme(toggledTheme);
   };
+
+  // DELETE
+  const deleteCookie = (id) => {
+    setCookiesArray(cookiesArray.filter((cookie) => cookie.id !== id));
+  };
+
+  const [cookiesArray, setCookiesArray] = useState(cookies);
+  const [selectedCookie, setSelectedCookie] = useState(null);
+
   return (
     <div>
       <ThemeProvider theme={theme[currentTheme]}>
@@ -34,7 +50,28 @@ function App() {
         </ChangeTheme>
         <Title>Cookies and beyond!</Title>
         <Description>Where cookies maniacs gather</Description>
-        <CookieList cookies={cookies} />
+
+        {selectedCookie ? (
+          <>
+            <button
+              onClick={() => setSelectedCookie(null)}
+              display={selectedCookie ? "block" : "none"}
+            >
+              🔙
+            </button>
+            <CookieDetailsView
+              deleteCookie={deleteCookie}
+              cookie={selectedCookie}
+            />
+          </>
+        ) : (
+          <CookieList
+            cookiesArray={cookiesArray}
+            deleteCookie={deleteCookie}
+            setCookiesArray={setCookiesArray}
+            setSelectedCookie={setSelectedCookie}
+          />
+        )}
       </ThemeProvider>
     </div>
   );

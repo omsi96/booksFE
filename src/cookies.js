@@ -5,6 +5,7 @@ const cookies = [
     price: "10 KD",
     img:
       "https://www.boorooandtiggertoo.com/wp-content/uploads/2019/01/Chicks-cookie-11-3.jpg",
+    slug: "katkoot-cookie",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const cookies = [
     price: "10 KD",
     img:
       "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/7/17/1/FN_Simple-Chocolate-Chip-Cookies_s4x3.jpg.rend.hgtvcom.826.620.suffix/1438794106265.jpeg",
+    slug: "chocolate-chip-cookie",
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const cookies = [
     price: "10 KD",
     img:
       "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2008/11/9/0/EI0709_Hazelnut-Chocolate-Chip-Cookies.jpg.rend.hgtvcom.616.462.suffix/1383002876878.jpeg",
+    slug: "hazelnut-cookie",
   },
 ];
 

@@ -1,27 +1,15 @@
 import Home from "./Components/Home";
-import CookieList from "./Components/CookieList";
 import { Route, Switch } from "react-router";
 import { useState } from "react";
 import { ChangeTheme, GlobalStyle } from "./styles";
-import cookies from "./cookies";
 import { ThemeProvider } from "styled-components";
 import Navbar from "./Components/Navbar";
-import CookieDetailsView from "./Components/CookieDetailsView";
+import BookDetailsView from "./Components/Books/BookDetailsView";
+import BooksList from "./Components/Books/BooksList";
+import books from "./data/books.json";
 
 const App = () => {
-  const [currentTheme, setCurrentTheme] = useState("light");
-  const toggledTheme = (theme) => (theme === "dark" ? "light" : "dark");
-  const toggleTheme = () => {
-    setCurrentTheme(toggledTheme);
-  };
-
-  // DELETE
-  const deleteCookie = (id) => {
-    setCookiesArray(cookiesArray.filter((cookie) => cookie.id !== id));
-  };
-
-  const [cookiesArray, setCookiesArray] = useState(cookies);
-  const [selectedCookie, setSelectedCookie] = useState(null);
+  // THEME SELECTION
   const theme = {
     light: {
       mainColor: "#242424",
@@ -34,6 +22,21 @@ const App = () => {
       pink: "#ff85a2",
     },
   };
+  const toggledTheme = (theme) => (theme === "dark" ? "light" : "dark");
+  const toggleTheme = () => {
+    setCurrentTheme(toggledTheme);
+  };
+
+  // STATES
+  const [currentTheme, setCurrentTheme] = useState("light");
+  const [booksArray, setBooksArray] = useState(books);
+  const [selectedBook, setSelectedBook] = useState(null);
+
+  /// ENVIRONMENT STATES METHODS
+  // DELETE
+  const deleteBook = (id) => {
+    setBooksArray(booksArray.filter((book) => book.id !== id));
+  };
 
   return (
     <>
@@ -45,19 +48,24 @@ const App = () => {
           {`${toggledTheme(currentTheme)} mode`}
         </ChangeTheme>
 
+        {/* 
+        *
+        *
+        ROUTER 
+        *
+        *
+        *
+        */}
         <Switch>
-          <Route path="/cookies/:cookieSlug">
-            <CookieDetailsView
-              cookies={cookiesArray}
-              deleteCookie={deleteCookie}
-            />
+          <Route path="/books/:bookSlug">
+            <BookDetailsView books={booksArray} deleteBook={deleteBook} />
           </Route>
-          <Route path="/cookies">
-            <CookieList
-              cookiesArray={cookiesArray}
-              deleteCookie={deleteCookie}
-              setCookiesArray={setCookiesArray}
-              setSelectedCookie={setSelectedCookie}
+          <Route path="/books">
+            <BooksList
+              books={booksArray}
+              deleteBook={deleteBook}
+              setSelectedBook={setSelectedBook}
+              selectedBook={selectedBook}
             />
           </Route>
 

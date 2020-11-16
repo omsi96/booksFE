@@ -15,10 +15,10 @@ const Navbar = () => {
           <div className="navbar-nav">
             <NavLink
               className="nav-item nav-link active"
-              to="/cookies"
+              to="/books"
               style={{ margin: "10px", float: "right" }}
             >
-              Cookies
+              Books
             </NavLink>
           </div>
         </div>

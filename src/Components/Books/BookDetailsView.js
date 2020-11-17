@@ -1,12 +1,15 @@
 import { BookImage, BookStyled } from "../../styles/BookStyled";
 import { Redirect, useParams } from "react-router-dom";
-
-const BookDetailsView = ({ books, deleteBook }) => {
+import booksStore from "../../stores/BookStore";
+import { observer } from "mobx-react";
+const BookDetailsView = () => {
+  const books = booksStore.books;
   const { bookSlug } = useParams();
   let book = books.find((book) => book.slug === bookSlug);
   if (!book) return <Redirect to="/books" />;
   console.log(bookSlug);
   console.log(book);
+
   return (
     <div style={{ display: "flex" }}>
       <BookStyled>
@@ -15,10 +18,10 @@ const BookDetailsView = ({ books, deleteBook }) => {
       <div style={{ display: "block" }}>
         <h4>{book.name}</h4>
         <p>{book.price}</p>
-        <button onClick={() => deleteBook(book.id)}>🗑</button>
+        <button onClick={() => booksStore.deleteBook(book.id)}>🗑</button>
       </div>
     </div>
   );
 };
 
-export default BookDetailsView;
+export default observer(BookDetailsView);

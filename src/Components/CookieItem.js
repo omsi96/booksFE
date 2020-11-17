@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Card, CookieImage, Paragraph } from "../styles";
-const CookieItem = ({ cookie, deleteCookie, setSelectedCookie }) => (
+const CookieItem = ({ cookie, deleteCookie }) => (
   <div>
     <Card>
       <Link to={`/cookies/${cookie.slug}`}>

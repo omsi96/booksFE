@@ -4,11 +4,11 @@ import {
   ShadowFooter,
   BookHeading,
 } from "../../styles/BookStyled";
-const Book = ({ book }) => {
+const Book = ({ book, oneIsHovered }) => {
   return (
-    <BookStyled book={book}>
+    <BookStyled oneIsHovered={oneIsHovered} book={book}>
       <BookImage src={book.img} />
-      <ShadowFooter>
+      <ShadowFooter style={{ opacity: book.hovered ? 1 : 0 }}>
         <BookHeading>{book.author}</BookHeading>
       </ShadowFooter>
     </BookStyled>

@@ -2,12 +2,7 @@ import { useState } from "react";
 import { ListWrapper } from "../styles";
 import CookieItem from "./CookieItem";
 import { SearchBar } from "./SearchBar";
-const CookiesList = ({
-  cookiesArray,
-  deleteCookie,
-  setCookiesArray,
-  setSelectedCookie,
-}) => {
+const CookiesList = ({ cookiesArray }) => {
   const [query, setQuery] = useState("");
   return (
     <>
@@ -20,12 +15,7 @@ const CookiesList = ({
             return cookie.name.toLowerCase().includes(query.toLowerCase());
           })
           .map((cookie) => (
-            <CookieItem
-              cookie={cookie}
-              key={cookie.id}
-              deleteCookie={deleteCookie}
-              setSelectedCookie={setSelectedCookie}
-            />
+            <CookieItem cookie={cookie} key={cookie.id} />
           ))}
       </ListWrapper>
     </>

@@ -1,9 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import globalStore from "../stores/GlobalStore";
+import { ChangeTheme } from "../styles";
 import Logo from "./Logo";
-const Navbar = () => {
+const Navbar = ({ theme, toggle }) => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className={`navbar navbar-expand-lg navbar-${theme} bg-${theme}`}>
         <NavLink
           className="navbar-brand"
           to="/"
@@ -20,6 +22,11 @@ const Navbar = () => {
             >
               Books
             </NavLink>
+          </div>
+          <div className="pull-right ">
+            <ChangeTheme
+              onClick={() => globalStore.toggleTheme()}
+            >{`${globalStore.theme} mode`}</ChangeTheme>
           </div>
         </div>
       </nav>

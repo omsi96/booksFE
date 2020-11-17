@@ -1,13 +1,12 @@
 import Home from "./Components/Home";
 import { Route, Switch } from "react-router";
-import { useState } from "react";
-import { ChangeTheme, GlobalStyle } from "./styles";
+import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
 import Navbar from "./Components/Navbar";
 import BookDetailsView from "./Components/Books/BookDetailsView";
 import BooksList from "./Components/Books/BooksList";
-import books from "./data/books.json";
-
+import { observer } from "mobx-react";
+import globalStore from "./stores/GlobalStore";
 const App = () => {
   // THEME SELECTION
   const theme = {
@@ -22,31 +21,14 @@ const App = () => {
       pink: "#ff85a2",
     },
   };
-  const toggledTheme = (theme) => (theme === "dark" ? "light" : "dark");
-  const toggleTheme = () => {
-    setCurrentTheme(toggledTheme);
-  };
 
   // STATES
-  const [currentTheme, setCurrentTheme] = useState("light");
-  const [booksArray, setBooksArray] = useState(books);
-  const [selectedBook, setSelectedBook] = useState(null);
-
-  /// ENVIRONMENT STATES METHODS
-  // DELETE
-  const deleteBook = (id) => {
-    setBooksArray(booksArray.filter((book) => book.id !== id));
-  };
 
   return (
     <>
-      <ThemeProvider theme={theme[currentTheme]}>
+      <ThemeProvider theme={theme[globalStore.theme]}>
         <GlobalStyle />
         <Navbar />
-
-        <ChangeTheme onClick={toggleTheme}>
-          {`${toggledTheme(currentTheme)} mode`}
-        </ChangeTheme>
 
         {/* 
         *
@@ -54,19 +36,13 @@ const App = () => {
         ROUTER 
         *
         *
-        *
         */}
         <Switch>
           <Route path="/books/:bookSlug">
-            <BookDetailsView books={booksArray} deleteBook={deleteBook} />
+            <BookDetailsView />
           </Route>
           <Route path="/books">
-            <BooksList
-              books={booksArray}
-              deleteBook={deleteBook}
-              setSelectedBook={setSelectedBook}
-              selectedBook={selectedBook}
-            />
+            <BooksList />
           </Route>
 
           <Route exact path="/">
@@ -78,4 +54,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default observer(App);

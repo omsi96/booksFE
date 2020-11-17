@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Card, CookieImage, Paragraph } from "../styles";
+import { Paragraph } from "../styles";
 import { Redirect, useParams } from "react-router-dom";
 
 const CookieDetailsView = ({ cookies, deleteCookie }) => {

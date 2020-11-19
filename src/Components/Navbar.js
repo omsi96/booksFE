@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import globalStore from "../stores/GlobalStore";
-import { ChangeTheme } from "../styles";
 import Logo from "./Logo";
+
+import ToggleButton from "react-theme-toggle-button";
+import "react-theme-toggle-button/dist/index.css";
+
 const Navbar = ({ theme, toggle }) => {
   return (
     <div>
@@ -24,9 +27,10 @@ const Navbar = ({ theme, toggle }) => {
             </NavLink>
           </div>
           <div className="pull-right ">
-            <ChangeTheme
-              onClick={() => globalStore.toggleTheme()}
-            >{`${globalStore.theme} mode`}</ChangeTheme>
+            <ToggleButton
+              isDark={globalStore.theme === "dark"}
+              onChange={() => globalStore.toggleTheme()}
+            />
           </div>
         </div>
       </nav>

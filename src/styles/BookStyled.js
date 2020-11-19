@@ -77,3 +77,9 @@ export const BooksListStyled = styled.div`
   /* overflow-y: auto; */
   /* height: 400px; */
 `;
+
+export const BookItem = styled.img`
+  &:hover {
+    transform: scale(1.1);
+  }
+`;

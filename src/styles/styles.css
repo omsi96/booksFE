@@ -9,3 +9,34 @@
   overflow: visible;
   background-size: cover;
 }
+
+.book-details {
+  display: flex;
+  margin: 20px;
+}
+.items-section {
+  display: flex;
+}
+
+.book-action-item {
+  cursor: pointer;
+}
+.book-details-div-display {
+  display: block;
+  width: 300px;
+  height: 200px;
+  /* margin: 20px; */
+  /* padding: 20px; */
+
+  /* object-fit: cover; */
+}
+
+.book-image-display {
+  height: 400px;
+}
+.book-control-item {
+  position: absolute;
+  top: 50px;
+  cursor: pointer;
+  /* margin: 12px; */
+}

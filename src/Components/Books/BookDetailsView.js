@@ -3,6 +3,7 @@ import { Redirect, useParams } from "react-router-dom";
 import booksStore from "../../stores/BookStore";
 import { observer } from "mobx-react";
 import "../../styles/styles.css";
+import EditBookButton from "../buttons/EditBookButton";
 const BookDetailsView = () => {
   const books = booksStore.books;
   const { bookSlug } = useParams();
@@ -12,14 +13,16 @@ const BookDetailsView = () => {
   console.log(book);
 
   return (
-    <div style={{ display: "flex" }}>
-      <div className="book">
-        <BookImage width="50%" src={book.img} alt="" />
+    <div className="book-details">
+      <div className="book-details-div-display">
+        <img className="book-image-display" src={book.img} alt="" />
       </div>
-      <div style={{ display: "block" }}>
+      <div>
         <h4>{book.name}</h4>
         <p>{`${book.price} KWD`} </p>
-        <button onClick={() => booksStore.deleteBook(book.id)}>🗑</button>
+        <div className="book-action-item">
+          <EditBookButton book={book} className={"book-action-item"} />
+        </div>
       </div>
     </div>
   );

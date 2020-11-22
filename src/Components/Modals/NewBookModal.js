@@ -2,14 +2,16 @@ import { useState } from "react";
 import Modal from "react-modal";
 import booksStore from "../../stores/BookStore";
 
-const NewBookModal = ({ isOpen, closeModal }) => {
-  const [book, setBook] = useState({
-    name: "",
-    author: "",
-    img: "",
-    description: "",
-    price: 0,
-  });
+const NewBookModal = ({ isOpen, closeModal, oldBook }) => {
+  const [book, setBook] = useState(
+    { ...oldBook } ?? {
+      name: "",
+      author: "",
+      img: "",
+      description: "",
+      price: 0,
+    }
+  );
 
   const handleChange = (event) => {
     setBook({
@@ -22,14 +24,15 @@ const NewBookModal = ({ isOpen, closeModal }) => {
     event.preventDefault();
     console.log(book);
     // Should make sure that the book has been created!
-    booksStore.createBook(book);
+    oldBook ? booksStore.updateBook(book) : booksStore.createBook(book);
+
     closeModal();
   };
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={closeModal}
+      onRequestClose={() => closeModal()}
       contentLabel="New Book Modal"
     >
       <h3>New Book</h3>
@@ -43,6 +46,7 @@ const NewBookModal = ({ isOpen, closeModal }) => {
               className="form-control"
               name="name"
               onChange={handleChange}
+              value={book.name}
             />
           </div>
           <div className="col-6">
@@ -53,6 +57,7 @@ const NewBookModal = ({ isOpen, closeModal }) => {
               className="form-control"
               name="author"
               onChange={handleChange}
+              value={book.author}
             />
           </div>
           <div className="col-6">
@@ -64,6 +69,7 @@ const NewBookModal = ({ isOpen, closeModal }) => {
               className="form-control"
               name="price"
               onChange={handleChange}
+              value={book.price}
             />
           </div>
           <div className="col-6">
@@ -74,6 +80,7 @@ const NewBookModal = ({ isOpen, closeModal }) => {
               className="form-control"
               name="description"
               onChange={handleChange}
+              value={book.description}
             />
           </div>
           <div className="col-12">
@@ -84,13 +91,13 @@ const NewBookModal = ({ isOpen, closeModal }) => {
               className="form-control"
               name="img"
               onChange={handleChange}
+              value={book.img}
             />
           </div>
 
           <div className="col-12">
             <button type="submit" className="btn btn-primary">
-              {" "}
-              Submit{" "}
+              {oldBook ? "Update" : "Create"}
             </button>
           </div>
         </div>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const BookStyled = styled.div`
-  cursor: pointer;
   position: relative;
   background-color: black;
   margin: 50px;
@@ -39,11 +38,11 @@ export const BookImage = styled.img`
 
 export const ShadowFooter = styled.div`
   /* display: none; */
+  position: absolute;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: absolute;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 4px;
@@ -80,6 +79,6 @@ export const BooksListStyled = styled.div`
 
 export const BookItem = styled.img`
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 `;

@@ -38,7 +38,7 @@ const BooksList = () => {
       <AddBookButton />
       <BooksListStyled>
         {hoveredBooks.filter(filterBooksByName).map((book, index) => (
-          <Link to={`/books/${book.slug}`} key={book.id}>
+          <div key={book.id}>
             <div
               onMouseEnter={() => hoverOn(index)}
               onMouseLeave={() => hoverOut(index)}
@@ -46,7 +46,7 @@ const BooksList = () => {
             >
               <Book book={book} oneIsHovered={oneIsHovered} key={book.id} />
             </div>
-          </Link>
+          </div>
         ))}
       </BooksListStyled>
     </div>

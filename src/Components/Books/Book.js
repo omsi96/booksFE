@@ -2,7 +2,6 @@
   Don't try to understand this code!
 */
 
-import bookStore from "../../stores/BookStore";
 import {
   BookStyled,
   BookImage,
@@ -10,10 +9,9 @@ import {
   BookHeading,
 } from "../../styles/BookStyled";
 import "../../styles/styles.css";
-import { MdDelete } from "react-icons/md";
+
 import EditBookButton from "../buttons/EditBookButton";
 import DeleteBookButton from "../buttons/DeleteBookButton";
-import BookActionItem from "../buttons/BookActionItem";
 import { useHistory } from "react-router";
 import { observer } from "mobx-react";
 
@@ -37,10 +35,8 @@ const Book = ({ book, oneIsHovered }) => {
         onClick={navigate}
       ></div>
       <ShadowFooter style={{ opacity: book.hovered ? 1 : 0 }}>
-        {/* <DeleteBookButton book={book} />
-        <EditBookButton book={book} /> */}
-        <button onClick={() => bookStore.deleteBook(book.id)}> DELETE </button>
-
+        <DeleteBookButton book={book} />
+        <EditBookButton book={book} />
         <BookHeading>{book.author}</BookHeading>
       </ShadowFooter>
     </BookStyled>

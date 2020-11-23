@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import booksStore from "../../stores/BookStore";
 
@@ -28,6 +28,10 @@ const NewBookModal = ({ isOpen, closeModal, oldBook }) => {
 
     closeModal();
   };
+
+  useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
 
   return (
     <Modal

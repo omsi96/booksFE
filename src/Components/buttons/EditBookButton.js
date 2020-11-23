@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { AiTwotoneEdit } from "react-icons/ai";
-// import bookStore from "../../stores/BookStore";
 import NewBookModal from "../Modals/NewBookModal";
 import "../../styles/styles.css";
 
@@ -21,25 +19,14 @@ const EditBookButton = ({ book }) => {
   return (
     <>
       <NewBookModal isOpen={isOpen} closeModal={closeModal} oldBook={book} />
-
-      <label onClick={handleClick}>✏️</label>
+      <label
+        style={{ cursor: "pointer", marginRight: -200 }}
+        onClick={handleClick}
+      >
+        ✏️
+      </label>
     </>
   );
 };
-
-// <div>
-// <AiTwotoneEdit
-//   onClick={(e) => {
-//     e.stopPropagation();
-
-//     console.log("I'm trying to open");
-//     // openModal();
-//   }}
-//   color="white"
-//   size="2.5em"
-//   className="book-action-item"
-// />
-// {/* <NewBookModal isOpen={isOpen} closeModal={closeModal} oldBook={book} /> */}
-// </div>
 
 export default EditBookButton;

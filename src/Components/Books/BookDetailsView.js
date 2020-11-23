@@ -1,4 +1,3 @@
-import { BookImage } from "../../styles/BookStyled";
 import { Redirect, useParams } from "react-router-dom";
 import booksStore from "../../stores/BookStore";
 import { observer } from "mobx-react";

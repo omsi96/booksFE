@@ -1,40 +1,35 @@
-import Axios from "axios";
-import { makeAutoObservable } from "mobx";
-import slugify from "react-slugify";
-// import books from "../data/books.json";
-import _ from "lodash";
+import { action, makeAutoObservable, makeObservable, observable } from "mobx";
+import * as LocalHost from "./ExpressApis";
+import * as LocalStorage from "./LocalStorage";
 class BookStore {
-  constructor() {
-    makeAutoObservable(this);
-  }
   books = [];
+  constructor() {
+    makeObservable(this, {
+      books: observable,
+      fetchBooks: action,
+      createBook: action,
+      deleteBook: action,
+      updateBook: action,
+    });
+  }
+  // CHANGE THIS HERE TO ANY OTHER HOST LIKE FIREBASE ...
+  API = LocalHost;
   fetchBooks = async () => {
     console.log("Fetching za books");
-    try {
-      const response = await Axios.get("http://localhost/books");
-      console.log("BookStore -> Response\n", response);
-      this.books = response.data;
-    } catch (e) {
-      console.log("BookStore -> Response\n", this.books);
-      this.books = null;
-    }
+    this.books = await this.API.fetchBooks();
   };
 
-  createBook = (book) => {
-    book.slug = slugify(book.name);
-    book.id = this.books[this.books.length - 1].id + 1;
-    this.books.push(book);
+  createBook = async (book) => {
+    this.books = await this.API.createBook(this.books, book);
   };
-  deleteBook = (bookId) => {
-    this.books = this.books.filter((book) => book.id !== bookId);
+  deleteBook = async (bookId) => {
+    this.books = await this.API.deleteBook(this.books, bookId);
+    await this.fetchBooks();
   };
 
-  updateBook = (book) => {
-    // TODO:COMPLETE THIS TASK!
-    _.extend(
-      this.books.find((_book) => book.id === _book.id),
-      book
-    );
+  updateBook = async (book) => {
+    await this.API.updateBook(this.books, book);
+    this.books = await this.API.fetchBooks();
   };
 }
 

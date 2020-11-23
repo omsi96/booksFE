@@ -15,6 +15,7 @@ import EditBookButton from "../buttons/EditBookButton";
 import DeleteBookButton from "../buttons/DeleteBookButton";
 import BookActionItem from "../buttons/BookActionItem";
 import { useHistory } from "react-router";
+import { observer } from "mobx-react";
 
 const Book = ({ book, oneIsHovered }) => {
   const history = useHistory();
@@ -36,22 +37,9 @@ const Book = ({ book, oneIsHovered }) => {
         onClick={navigate}
       ></div>
       <ShadowFooter style={{ opacity: book.hovered ? 1 : 0 }}>
-        <DeleteBookButton book={book} />
-
-        <span>
-          <EditBookButton
-            style={{
-              position: "absolute",
-              right: 0,
-              marginRight: 14,
-              fontSize: 17,
-            }}
-            book={book}
-            // style={{ position: "absolute", top: 20 }}
-
-            // style={{ position: "absolute", right: "0px" }}
-          />
-        </span>
+        {/* <DeleteBookButton book={book} />
+        <EditBookButton book={book} /> */}
+        <button onClick={() => bookStore.deleteBook(book.id)}> DELETE </button>
 
         <BookHeading>{book.author}</BookHeading>
       </ShadowFooter>
@@ -59,4 +47,4 @@ const Book = ({ book, oneIsHovered }) => {
   );
 };
 
-export default Book;
+export default observer(Book);

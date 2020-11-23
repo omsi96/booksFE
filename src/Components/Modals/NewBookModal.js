@@ -34,6 +34,7 @@ const NewBookModal = ({ isOpen, closeModal, oldBook }) => {
       isOpen={isOpen}
       onRequestClose={() => closeModal()}
       contentLabel="New Book Modal"
+      appElement={document.getElementById("app")}
     >
       <h3>New Book</h3>
       <form onSubmit={handleSubmit}>

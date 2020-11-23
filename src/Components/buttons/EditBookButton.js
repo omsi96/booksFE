@@ -22,9 +22,7 @@ const EditBookButton = ({ book }) => {
     <>
       <NewBookModal isOpen={isOpen} closeModal={closeModal} oldBook={book} />
 
-      <label className="book-control-item" onClick={handleClick}>
-        ✏️
-      </label>
+      <label onClick={handleClick}>✏️</label>
     </>
   );
 };

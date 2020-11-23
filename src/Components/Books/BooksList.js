@@ -6,6 +6,7 @@ import booksStore from "../../stores/BookStore";
 import { observer } from "mobx-react";
 import { useState } from "react";
 import { SearchBar } from "../SearchBar";
+import bookStore from "../../stores/BookStore";
 const BooksList = () => {
   const books = booksStore.books.map((book) => ({ ...book, hovered: false }));
   // STATES
@@ -45,6 +46,9 @@ const BooksList = () => {
               key={book.id}
             >
               <Book book={book} oneIsHovered={oneIsHovered} key={book.id} />
+              <button onClick={() => bookStore.deleteBook(book.id)}>
+                DELETE BOOK
+              </button>
             </div>
           </div>
         ))}

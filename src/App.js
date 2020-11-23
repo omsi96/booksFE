@@ -7,6 +7,7 @@ import BookDetailsView from "./Components/Books/BookDetailsView";
 import BooksList from "./Components/Books/BooksList";
 import { observer } from "mobx-react";
 import globalStore from "./stores/GlobalStore";
+import bookStore from "./stores/BookStore";
 const App = () => {
   // THEME SELECTION
   const theme = {
@@ -26,6 +27,9 @@ const App = () => {
 
   return (
     <>
+      {bookStore.books.map((b) => (
+        <p>{b.name}</p>
+      ))}
       <ThemeProvider theme={theme[globalStore.theme]}>
         <GlobalStyle />
         <Navbar />
@@ -54,4 +58,4 @@ const App = () => {
   );
 };
 
-export default observer(App);
+export default App;

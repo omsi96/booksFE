@@ -4,6 +4,7 @@ import booksStore from "../../stores/BookStore";
 import { observer } from "mobx-react";
 import "../../styles/styles.css";
 import EditBookButton from "../buttons/EditBookButton";
+import DeleteBookButton from "../buttons/DeleteBookButton";
 const BookDetailsView = () => {
   const books = booksStore.books;
   const { bookSlug } = useParams();
@@ -20,9 +21,8 @@ const BookDetailsView = () => {
       <div>
         <h4>{book.name}</h4>
         <p>{`${book.price} KWD`} </p>
-        <div className="book-action-item">
-          <EditBookButton book={book} className={"book-action-item"} />
-        </div>
+        <DeleteBookButton book={book} />
+        <EditBookButton book={book} />
       </div>
     </div>
   );

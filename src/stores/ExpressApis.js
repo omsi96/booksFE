@@ -17,18 +17,14 @@ export const fetchBooks = async () => {
   }
 };
 
-export const createBook = async (books, book) => {
-  console.log("Yoo Creation");
-  const response = await local.post("books/create/", book);
-  console.log("Yoo Creation 2");
-
-  if (response.status === 201) {
-    console.log("Creation with fetch books succeeded!");
-    const book = response.data;
-    return books.push(book);
-  } else {
+export const createBook = async (book) => {
+  console.log("Yoo Creation", book);
+  try {
+    const response = await local.post("books/create/", book);
+    return response.data;
+  } catch (e) {
     console.log("Couldn't createBook!");
-    return books;
+    return;
   }
 };
 
@@ -39,5 +35,11 @@ export const deleteBook = async (books, bookId) => {
 };
 
 export const updateBook = async (books, book) => {
-  await local.put(`books/${book.id}`);
+  try {
+    const response = await local.put(`books/${book.id}`, book);
+    return response.data;
+  } catch (e) {
+    console.log("Couldn't update Book!");
+    return;
+  }
 };

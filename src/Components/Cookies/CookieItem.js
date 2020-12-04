@@ -4,7 +4,7 @@ const CookieItem = ({ cookie, deleteCookie }) => (
   <div>
     <Card>
       <Link to={`/cookies/${cookie.slug}`}>
-        <CookieImage src={cookie.img} alt="Cookie image" />
+        <CookieImage src={cookie.image} alt="Cookie image" />
       </Link>
       <h4 className="h4">{cookie.name}</h4>
       <Paragraph className="cookie-price">{cookie.price}</Paragraph>

@@ -18,11 +18,12 @@ import { observer } from "mobx-react";
 const Book = ({ book, oneIsHovered }) => {
   const history = useHistory();
   const navigate = () => {
+    console.log("NAVIGATING:", book);
     history.push(`/books/${book.slug}`);
   };
   return (
     <BookStyled className="book" oneIsHovered={oneIsHovered} book={book}>
-      <BookImage src={book.img} />
+      <BookImage src={book.image} />
       <div
         style={{
           top: 0,

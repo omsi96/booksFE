@@ -34,6 +34,8 @@ export const BookImage = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 25px;
+  object-fit: cover;
+  overflow: hidden;
 `;
 
 export const ShadowFooter = styled.div`

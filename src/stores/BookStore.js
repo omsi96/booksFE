@@ -14,7 +14,8 @@ class BookStore {
   };
 
   createBook = async (book) => {
-    this.books = await this.API.createBook(this.books, book);
+    const newBook = await this.API.createBook(book);
+    this.books.push(newBook);
   };
   deleteBook = async (bookId) => {
     this.books = await this.API.deleteBook(this.books, bookId);
@@ -24,7 +25,6 @@ class BookStore {
   updateBook = async (book) => {
     console.log("Updating books", book);
     await this.API.updateBook(this.books, book);
-    this.books = await this.API.fetchBooks();
   };
 }
 

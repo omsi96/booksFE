@@ -94,9 +94,9 @@ const NewBookModal = ({ isOpen, closeModal, oldBook }) => {
               required
               type="text"
               className="form-control"
-              name="img"
+              name="image"
               onChange={handleChange}
-              value={book.img}
+              value={book.image}
             />
           </div>
 

@@ -4,6 +4,7 @@ import Logo from "./Logo";
 
 import ToggleButton from "react-theme-toggle-button";
 import "react-theme-toggle-button/dist/index.css";
+import SignupButton from "./buttons/SignUpButton";
 
 const Navbar = ({ theme, toggle }) => {
   return (
@@ -33,6 +34,7 @@ const Navbar = ({ theme, toggle }) => {
             />
           </div>
         </div>
+        <SignupButton />
       </nav>
     </div>
   );

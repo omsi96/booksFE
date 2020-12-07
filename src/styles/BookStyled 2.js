@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const BookStyled = styled.div`
+  cursor: pointer;
   position: relative;
   background-color: black;
-  margin: 20px;
+  margin: 50px;
   height: 400px;
   width: 240px;
   border-radius: 25px;
@@ -23,7 +24,7 @@ export const BookStyled = styled.div`
     }
   }};
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 `;
 
@@ -34,17 +35,15 @@ export const BookImage = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 25px;
-  object-fit: cover;
-  overflow: hidden;
 `;
 
 export const ShadowFooter = styled.div`
   /* display: none; */
-  position: absolute;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  position: absolute;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 4px;
@@ -73,7 +72,6 @@ export const BooksListStyled = styled.div`
   display: flex;
   /* margin: 40px; */
   flex-wrap: wrap;
-  transition: all 0.4s ease;
   /* align-items: center; */
   /* overflow-x: scroll; */
   /* overflow-y: auto; */

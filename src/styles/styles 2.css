@@ -1,0 +1,17 @@
+.book {
+  /* cursor: pointer; */
+  position: relative;
+  /* background-color: black; */
+  margin: 50px;
+  height: 400px;
+  width: 240px;
+  border-radius: 25px;
+  overflow: visible;
+  background-size: cover;
+}
+
+.book-control-item {
+  position: absolute;
+  top: 50px;
+  margin: 12px;
+}

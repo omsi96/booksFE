@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const ROOT_URL = "http://localhost";
+const ROOT_URL = "http://localhost/";
 const local = Axios.create({
   baseURL: ROOT_URL,
   timeout: 1000,

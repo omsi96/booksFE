@@ -35,7 +35,7 @@ const Book = ({ book, oneIsHovered }) => {
         }}
         onClick={navigate}
       ></div>
-      <ShadowFooter style={{ opacity: book.hovered ? 1 : 0 }}>
+      <ShadowFooter style={{ opacity: 1 }}>
         <DeleteBookButton book={book} />
         <EditBookButton book={book} />
         <BookHeading>{book.author}</BookHeading>
